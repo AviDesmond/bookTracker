@@ -8,7 +8,7 @@ function Book(title, author, pages, isRead) {
   this.isRead = isRead;
 }
 // Array for storing books
-const booksArr = JSON.parse(localStorage.getItem('books'));
+const booksArr = (localStorage.length > 0) ? JSON.parse(localStorage.getItem('books')) : [];
 
 // Adds Books to the Array
 const addBook = (title, author, pages, isRead) => {
@@ -58,11 +58,7 @@ const handleCards = (arr) => {
     cardBody.appendChild(isRead);
     author.textContent = arr[i].author;
     pages.textContent = arr[i].pages;
-    if (arr[i].isRead === true) {
-      isRead.textContent = 'Book Read!';
-    } else {
-      isRead.textContent = 'Book not Read';
-    }
+    isRead.textContent = arr[i].isRead ? 'Book Read!' : 'Book not Read';
   }
   // Delete Button Behaviour
 
